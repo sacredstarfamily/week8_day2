@@ -38,7 +38,7 @@
         {
             "language": "typescript",
             "source": [
-                "class Car{\r\n    //define the types of the properties\r\n    make: string\r\n    model: string\r\n    year: number\r\n    \r\n    constructor(make: string, model: string, year: number){\r\n        //assign the properties\r\n        this.make=make\r\n        this.model=model\r\n        this.year=year\r\n    }\r\n    \r\n    drive(miles:Number):void{\r\n        console.log(\"You drove \", miles, \"miles\")\r\n    }\r\n}\r\n    \r\nlet delorean1=new Car(\"DeLorean\", \"DMC-12\", 1981)\r\ndelorean1"
+                "class Car{\n    //define the types of the properties\n    make: string\n    model: string\n    year: number\n    \n    constructor(make: string, model: string, year: number){\n        //assign the properties\n        this.make=make\n        this.model=model\n        this.year=year\n    }\n    \n    drive(miles:Number):void{\n        console.log(\"You drove \", miles, \"miles\")\n    }\n}\n    \nlet delorean1=new Car(\"DeLorean\", \"DMC-12\", 1981)\ndelorean1"
             ],
             "outputs": [
                 {
@@ -1894,9 +1894,29 @@
         {
             "language": "typescript",
             "source": [
-                "//Solution\n\n"
+                "//Solution\n\n\nabstract class Character {\n  constructor(protected name: string, protected _gold: number) {}\n  protected _gold: number;\n\n  abstract attack(): void;\n  abstract defend(): void;\n  \n  public set _gold(v : number) {\n    this._gold = v;\n  }\n  \n  collectGold(amount: number): void {\n    this._gold += amount;\n  }\n}\n\n\ninterface Attacker {\n  attack(): void;\n}\n\n\ninterface Defender {\n  defend(): void;\n}\n\n// Ogre class\nclass Ogre extends Character implements Attacker, Defender {\n  attack(): void {\n    console.log(\"Ogre attacks with a club\");\n  }\n\n  defend(): void {\n    console.log(\"Ogre defends with a shield\");\n  }\n}\n\n// Peon class\nclass Peon extends Character implements Attacker, Defender {\n  attack(): void {\n    console.log(\"Peon attacks with a club\");\n  }\n\n  defend(): void {\n    console.log(\"Peon defends with a shield\");\n  }\n}\n\n// Knight class\nclass Knight extends Character implements Attacker, Defender {\n  attack(): void {\n    console.log(\"Knight attacks with a sword\");\n  }\n\n  defend(): void {\n    console.log(\"Knight defends with armor\");\n  }\n}\n\n// Archer class\nclass Archer extends Character implements Attacker {\n  attack(): void {\n    console.log(\"Archer attacks with a bow and arrow\");\n  }\n\n  defend(): void {\n    console.log(\"Archer has only a tunic for defense\");\n  }\n}\n\n// Usage example\nconst ogre = new Ogre(\"heavy\", 100);\nogre.attack();\nogre.defend();\n\nogre._gold = 100;\nogre.collectGold(10);\nconst peon = new Peon(\"light\", 50);\npeon.attack();\npeon.defend();\npeon.collectGold(5);\n\nconst knight = new Knight(\"Sir Lancelot\", 200);\nknight.attack();\nknight.defend();\nknight.collectGold(15);\n\nconst archer = new Archer(\"Robin Hood\", 75);\narcher.attack();\narcher.defend();\narcher.collectGold(8);\n\nconsole.log(ogre._gold);"
             ],
-            "outputs": []
+            "outputs": [
+                {
+                    "items": [
+                        {
+                            "mime": "application/vnd.code.notebook.stdout",
+                            "value": [
+                                "Ogre attacks with a club",
+                                "Ogre defends with a shield",
+                                "Peon attacks with a club",
+                                "Peon defends with a shield",
+                                "Knight attacks with a sword",
+                                "Knight defends with armor",
+                                "Archer attacks with a bow and arrow",
+                                "Archer has only a tunic for defense",
+                                "110",
+                                ""
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
